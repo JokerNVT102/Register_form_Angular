@@ -1,0 +1,121 @@
+<div class="card" [style.margin.px]="30">
+  <div class="card-header bg-primary bg-gradient">Register-Form</div>
+  <div class="card-body">
+    <form
+      [formGroup]="frmUser"
+      autocomplete="false"
+      novalidate="true"
+      (ngSubmit)="onSubmitForm()"
+    >
+      <div class="form-group">
+        <mat-form-field appearance="fill">
+          <mat-label>Enter your UserName</mat-label>
+          <input
+            matInput
+            placeholder="User Name"
+            name="txtUserName"
+            formControlName="username"
+            required
+          />
+          <mat-icon matSuffix>sentiment_very_satisfied</mat-icon>
+        </mat-form-field>
+        <app-error-validate
+          [control]="frmUser.controls.username"
+          [name-control]="'User Name'"
+        ></app-error-validate>
+      </div>
+      <div class="form-group">
+        <mat-form-field appearance="fill">
+          <mat-label>Enter your password</mat-label>
+          <input
+            matInput
+            [type]="hide ? 'password' : 'text'"
+            name="txtPassword"
+            formControlName="password"
+            required
+          />
+          <button
+            mat-icon-button
+            matSuffix
+            (click)="hide = !hide"
+            [attr.aria-label]="'Hide password'"
+            [attr.aria-pressed]="hide"
+          >
+            <mat-icon>{{ hide ? "visibility_off" : "visibility" }}</mat-icon>
+          </button>
+        </mat-form-field>
+        <app-error-validate
+          [control]="frmUser.controls.password"
+          [name-control]="'Password'"
+        ></app-error-validate>
+      </div>
+      <div class="form-group">
+        <mat-form-field appearance="fill">
+          <mat-label>Enter your email</mat-label>
+          <input
+            matInput
+            placeholder="pat@example.com"
+            name="txtEmail"
+            formControlName="email"
+            required
+          />
+          <mat-icon matSuffix>email</mat-icon>
+        </mat-form-field>
+        <app-error-validate
+          [control]="frmUser.controls.email"
+          [name-control]="'Email'"
+        ></app-error-validate>
+      </div>
+      <div class="form-group">
+        <mat-form-field appearance="fill">
+          <mat-label>Enter your FullName</mat-label>
+          <input
+            matInput
+            placeholder="Full Name"
+            name="txtFullName"
+            formControlName="fullname"
+            required
+          />
+          <mat-icon matSuffix>sentiment_very_satisfied</mat-icon>
+        </mat-form-field>
+        <app-error-validate
+          [control]="frmUser.controls.fullname"
+          [name-control]="'Full Name'"
+        ></app-error-validate>
+      </div>
+      <div class="form-group">
+        <mat-form-field appearance="fill">
+          <mat-label>Enter your Number Phone</mat-label>
+          <input
+            matInput
+            type="tel"
+            min="10"
+            placeholder="Phone"
+            name="txtPhone"
+            maxlength="14"
+            formControlName="phone"
+            required
+            appPhoneMask
+          />
+          <!-- {{numberphone| formatNumberPhone}} -->
+          <mat-icon matSuffix>phone</mat-icon>
+        </mat-form-field>
+        <app-error-validate
+          [control]="frmUser.controls.phone"
+          [name-control]="'Number Phone'"
+        ></app-error-validate>
+      </div>
+      <button
+        type="submit"
+        [disabled]="frmUser.invalid"
+        class="btn btn-primary"
+        [style.margin-right.px]="10"
+      >
+        Save
+      </button>
+      <button type="button" class="btn btn-danger" (click)="onResetForm()">
+        Reset
+      </button>
+    </form>
+  </div>
+</div>

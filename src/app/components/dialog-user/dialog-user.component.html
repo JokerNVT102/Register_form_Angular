@@ -1,0 +1,11 @@
+<h2 mat-dialog-title>Register Form</h2>
+<mat-dialog-content class="mat-typography">
+  <h3>User Name: {{ data.username }}</h3>
+  <h3>Email: {{ data.email }}</h3>
+  <h3>Full Name: {{ data.fullname }}</h3>
+  <h3>Phone: {{ data.phone }}</h3>
+</mat-dialog-content>
+<mat-dialog-actions align="end">
+  <button mat-button (click)="onNoClick()">Cancel</button>
+  <button mat-button [mat-dialog-close]="true">Save</button>
+</mat-dialog-actions>
